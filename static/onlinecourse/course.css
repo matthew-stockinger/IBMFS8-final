@@ -141,6 +141,11 @@ input[type=text]:focus, input[type=password]:focus {
     color:red
 }
 
+.my-bg-teal {
+    background-color: #00a3b6;
+    color: #00a3b6;
+}
+
 .dropbtn {
   background-color: #005493;
   color: white;
