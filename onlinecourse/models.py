@@ -96,10 +96,10 @@ class Enrollment(models.Model):
 
 
 class Question(models.Model):
-    courses = models.ManyToManyField(Course)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     grade = models.IntegerField()
     question_text = models.TextField(null=False)
-    # lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE)
 
     def is_get_score(self, selected_ids):
        all_answers = self.choice_set.filter(is_correct=True).count()
