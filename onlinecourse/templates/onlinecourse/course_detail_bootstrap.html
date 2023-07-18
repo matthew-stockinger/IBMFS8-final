@@ -76,13 +76,21 @@
             <h5>Lesson {{lesson.order|add:1}}: {{lesson.title}}</h5>
           </div>
           <div class="card-body">{{lesson.content}}</div>
-          {% if user.is_authenticated %}
-          <div class="card-footer text-white text-right bg-info">
-            Start Exam
-          </div>
-          {% endif %}
         </div>
-        {% endfor %}
+        {% if user.is_authenticated %}
+        <button
+          class="btn btn-info btn-block text-right"
+          data-target="#exam{{lesson.order|add:1}}"
+          data-toggle="collapse"
+        >
+          Start Exam
+        </button>
+        <div id="exam{{lesson.order|add:1}}" class="collapse">
+          <div class="card">
+            <div class="card-body">Exam content here.</div>
+          </div>
+        </div>
+        {% endif %} {% endfor %}
       </div>
       <!-- Task: show questions and choices -->
       <!-- <HINT> Use Bootstrap Collapse to hide exam first, more details could be found here
