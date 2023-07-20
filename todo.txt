@@ -1,0 +1,8 @@
+# Course detail >> exams
+- in course_detail_bootstrap template, add action attribute to exam form to point
+    at a submit view.  probably: {% url 'onlinecourse:submit' lesson.id %}
+
+# Admin site
+- left-side navigation is not intuitive.  Though the course may wish me to leave everything registered there.
+- Questions view: list shows e.g. "question object (5)."  Should show question text instead.
+- Question detail view: Lesson id should show lesson title.

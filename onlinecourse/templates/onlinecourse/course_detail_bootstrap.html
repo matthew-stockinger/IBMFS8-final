@@ -78,42 +78,46 @@
         </div>
         {% if user.is_authenticated and lesson.question_set.all %}
         <button
-          class="btn btn-info btn-block text-right"
+          class="btn btn-info btn-block text-right pr-5"
           data-target="#exam{{lesson.order|add:1}}"
           data-toggle="collapse"
         >
           Start Exam
         </button>
         <div id="exam{{lesson.order|add:1}}" class="collapse">
-          <!-- Here, loop through questions associated with this lesson.
-        
-          underneath all questions, green button that says "submit".  
-          This should send all question responses to server. -->
-          
-          {% for question in lesson.question_set.all %}
-          <div class="card">
-            <div class="card-header"><h5>{{question.question_text}}</h5></div>
-            <div class="card-body">
-              {% for choice in question.choice_set.all %}
-              <input type="checkbox" name="{{choice.pk}}" id="{{choice.pk}}">
-              <label for="{{choice.pk}}">{{choice.choice_text}}</label>
-              <br>
-              {% endfor %}
+          <form id="questionform" action="" method="post">
+            {% csrf_token %} {% for question in lesson.question_set.all %}
+            <div class="card">
+              <div class="card-header"><h5>{{question.question_text}}</h5></div>
+              <div class="card-body">
+                {% for choice in question.choice_set.all %}
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="choice_{{choice.id}}"
+                    id="choice_{{choice.id}}"
+                    value="choice_{{choice.id}}"
+                  />
+                  <label for="choice_{{choice.id}}" class="form-check-label"
+                    >{{choice.choice_text}}</label
+                  >
+                </div>
+                {% endfor %}
+              </div>
             </div>
-          </div>
-          {% endfor %}
+            {% endfor %}
+            <input
+              type="submit"
+              value="Submit"
+              class="btn btn-success btn-block text-right pr-5"
+            />
+          </form>
         </div>
         {% endif %} {% endfor %}
       </div>
-      <!-- <HINT> If user is authenticated, show course exam with a list of question -->
-      <!-- <HINT> Each exam will have many questions -->
-
-      <!-- <HINT> Each question will have many choices -->
 
       <!-- <HINT> Create a form to collect the selected choices for all questions -->
-      <!-- <HINT> For each question choice, you may create a checkbox input like
-        <input type="check" name="choice_{{choice.id}}" id="{{choice.id}}" ...>
-        -->
 
       <!-- A choice submission form example
         <form id="questionform" action="point to a submit view" method="post">
