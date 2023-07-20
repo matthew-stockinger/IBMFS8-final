@@ -76,7 +76,7 @@
           </div>
           <div class="card-body">{{lesson.content}}</div>
         </div>
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and lesson.question_set.all %}
         <button
           class="btn btn-info btn-block text-right"
           data-target="#exam{{lesson.order|add:1}}"
@@ -89,7 +89,7 @@
         
           underneath all questions, green button that says "submit".  
           This should send all question responses to server. -->
-
+          
           {% for question in lesson.question_set.all %}
           <div class="card">
             <div class="card-header"><h5>{{question.question_text}}</h5></div>
