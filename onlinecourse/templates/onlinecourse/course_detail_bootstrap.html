@@ -85,7 +85,11 @@
           Start Exam
         </button>
         <div id="exam{{lesson.order|add:1}}" class="collapse">
-          <form id="questionform" action="" method="post">
+          <form
+            id="questionform"
+            action="{% url 'onlinecourse:submit' course.id %}"
+            method="post"
+          >
             {% csrf_token %} {% for question in lesson.question_set.all %}
             <div class="card">
               <div class="card-header"><h5>{{question.question_text}}</h5></div>
@@ -95,7 +99,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    name="choice_{{choice.id}}"
+                    name="question_{{question.id}}"
                     id="choice_{{choice.id}}"
                     value="choice_{{choice.id}}"
                   />
