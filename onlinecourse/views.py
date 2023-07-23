@@ -162,14 +162,4 @@ def show_exam_result(request, course_id, submission_id):
 
     context = {"course": course, "selected_ids": selected_ids, "grade": exam_grade}
 
-    debug_template = f"""
-    <!DOCTYPE html>
-    <html>
-    <body>
-    <p>{context}</p>
-    </body>
-    </html>
-"""
-
-    return HttpResponse(debug_template)
-    # return render(request, "onlinecourse/exam_result_bootstrap.html", context)
+    return render(request, "onlinecourse/exam_result_bootstrap.html", context)
