@@ -67,7 +67,6 @@
       </div>
       {% else %}
       <div class="alert alert-danger">
-        <!--HINT Display failed info -->
         <strong>Failed</strong> Sorry, {{user.first_name}}! You have failed the
         exam with score {{grade}} / 100
       </div>
@@ -80,6 +79,36 @@
       <div class="card-columns-vertical mt-1">
         <h5 class="">Exam results</h5>
         <!--HINT Display exam results-->
+        <!-- loop through all questions in this lesson/exam -->
+        {% for question in lesson.question_set.all %}
+        <!-- loop through each choice_text -->
+        <div class="card">
+          <div class="card-header">
+            <h5>{{question.question_text}}</h5>
+          </div>
+          <div class="card-body">
+            {% for choice in question.choice_set.all %}
+            <p class="
+                mb-0
+                {% if choice.id not in selected_ids and choice.is_correct %}text-warning{% endif %}
+                {% if choice.id in selected_ids and not choice.is_correct %}text-danger{% endif %}
+                {% if choice.id in selected_ids and choice.is_correct %}text-success{% endif %}"
+            >
+              {% if choice.id not in selected_ids and choice.is_correct %}Not selected: {% endif %}
+              {% if choice.id in selected_ids and not choice.is_correct %}Incorrect selection: {% endif %}
+              {% if choice.id in selected_ids and choice.is_correct %}Correct answer: {% endif %}
+              {{choice.choice_text}}
+            </p>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- each choice_text should be conditionally rendered. 
+            not selected, not answer - plain black
+            not selected, answer - text-warning "Not selected: {{choice.choice_text}}"
+            selected, not answer - text-warning "Incorrect selection: {{choice.choice_text}}"
+            selected, answer - text-success "Correct answer: {{choice.choice_text}}"
+          -->
+        {% endfor %}
       </div>
     </div>
   </body>

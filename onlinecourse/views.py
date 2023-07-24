@@ -160,6 +160,11 @@ def show_exam_result(request, course_id, submission_id):
 
     exam_grade = floor(num_questions_correct / questions.count() * 100)
 
-    context = {"course": course, "selected_ids": selected_ids, "grade": exam_grade}
+    context = {
+        "course": course,
+        "lesson": lesson,
+        "selected_ids": selected_ids,
+        "grade": exam_grade,
+    }
 
     return render(request, "onlinecourse/exam_result_bootstrap.html", context)
