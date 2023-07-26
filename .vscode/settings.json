@@ -2,5 +2,7 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "python.formatting.provider": "none"
+    "python.formatting.provider": "none",
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/c18762bc-b604-45e5-b69b-4091236c14ce/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/mstockinger-ibmfs8-final-project",
+    "appService.deploySubpath": "."
 }
