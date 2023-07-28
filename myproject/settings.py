@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # local dev:
-# with open("/django-keys/ibmfs8-final-key.txt") as f:
-#     SECRET_KEY = f.read().strip()
-SECRET_KEY = os.environ["SECRET_KEY"]
+with open("/django-keys/ibmfs8-final-key.txt") as f:
+    SECRET_KEY = f.read().strip()
+# SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -120,10 +120,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_ROOT = os.path.join(STATIC_ROOT, "media")
-MEDIA_URL = "/media/"
+# MEDIA_URL = "/media/"
+MEDIA_URL = os.path.join(STATIC_URL, "media/")
+
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
