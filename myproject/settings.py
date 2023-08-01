@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # local dev:
-# with open("/django-keys/ibmfs8-final-key.txt") as f:
-#     SECRET_KEY = f.read().strip()
-SECRET_KEY = os.environ["SECRET_KEY"]
+with open("/django-keys/ibmfs8-final-key.txt") as f:
+    SECRET_KEY = f.read().strip()
+# SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # <HINT> add your cloud host here
 ALLOWED_HOSTS = ["mstockinger-ibmfs8-final-project.azurewebsites.net", "127.0.0.1"]
