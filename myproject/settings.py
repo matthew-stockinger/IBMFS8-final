@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # <HINT> add your cloud host here
 ALLOWED_HOSTS = ["mstockinger-ibmfs8-final-project.azurewebsites.net", "127.0.0.1"]
