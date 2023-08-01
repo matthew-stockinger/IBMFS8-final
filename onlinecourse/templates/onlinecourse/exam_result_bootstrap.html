@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
   <head>
     <meta charset="UTF-8" />
-    {% load static %}
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'bs/css/bootstrap.min.css' %}" />
+    <title>Exam Result</title>
   </head>
   <body>
     <nav class="navbar navbar-light bg-light">
@@ -85,16 +84,14 @@
           </div>
           <div class="card-body">
             {% for choice in question.choice_set.all %}
-            <p class="
-                mb-0
-                {% if choice.id not in selected_ids and choice.is_correct %}text-warning{% endif %}
-                {% if choice.id in selected_ids and not choice.is_correct %}text-danger{% endif %}
-                {% if choice.id in selected_ids and choice.is_correct %}text-success{% endif %}"
+            <p
+              class="mb-0 {% if choice.id not in selected_ids and choice.is_correct %}text-warning{% endif %} {% if choice.id in selected_ids and not choice.is_correct %}text-danger{% endif %} {% if choice.id in selected_ids and choice.is_correct %}text-success{% endif %}"
             >
-              {% if choice.id not in selected_ids and choice.is_correct %}Not selected: {% endif %}
-              {% if choice.id in selected_ids and not choice.is_correct %}Incorrect selection: {% endif %}
-              {% if choice.id in selected_ids and choice.is_correct %}Correct answer: {% endif %}
-              {{choice.choice_text}}
+              {% if choice.id not in selected_ids and choice.is_correct %}Not
+              selected: {% endif %} {% if choice.id in selected_ids and not
+              choice.is_correct %}Incorrect selection: {% endif %} {% if
+              choice.id in selected_ids and choice.is_correct %}Correct answer:
+              {% endif %} {{choice.choice_text}}
             </p>
             {% endfor %}
           </div>
@@ -102,5 +99,8 @@
         {% endfor %}
       </div>
     </div>
+
+    <script src="{% static 'jq/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'bs/js/bootstrap.bundle.min.js' %}"></script>
   </body>
 </html>

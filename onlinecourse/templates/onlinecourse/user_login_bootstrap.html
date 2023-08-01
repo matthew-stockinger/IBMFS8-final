@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
   <head>
     <meta charset="UTF-8" />
-    {% load static %}
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'bs/css/bootstrap.min.css' %}" />
+    <title>User Login</title>
   </head>
   <body>
     <!-- Navigation bar -->
@@ -99,5 +98,8 @@
         <!--Style button with .btn and .btn-primary class -->
       </div>
     </form>
+
+    <script src="{% static 'jq/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'bs/js/bootstrap.bundle.min.js' %}"></script>
   </body>
 </html>

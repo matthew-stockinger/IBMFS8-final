@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
   <head>
-    {% load static %}
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="{% static 'bs/css/bootstrap.min.css' %}" />
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Online Courses</title>
   </head>
   <body>
@@ -110,5 +108,8 @@
     {% else %}
     <p>No courses are available.</p>
     {% endif %}
+
+    <script src="{% static 'jq/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'bs/js/bootstrap.bundle.min.js' %}"></script>
   </body>
 </html>
