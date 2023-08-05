@@ -85,13 +85,23 @@
           <div class="card-body">
             {% for choice in question.choice_set.all %}
             <p
-              class="mb-0 {% if choice.id not in selected_ids and choice.is_correct %}text-warning{% endif %} {% if choice.id in selected_ids and not choice.is_correct %}text-danger{% endif %} {% if choice.id in selected_ids and choice.is_correct %}text-success{% endif %}"
+              class="
+                mb-0 
+                {% if choice.id not in selected_ids and choice.is_correct %}text-warning{% endif %} 
+                {% if choice.id in selected_ids and not choice.is_correct %}text-danger{% endif %} 
+                {% if choice.id in selected_ids and choice.is_correct %}text-success{% endif %}
+              "
             >
-              {% if choice.id not in selected_ids and choice.is_correct %}Not
-              selected: {% endif %} {% if choice.id in selected_ids and not
-              choice.is_correct %}Incorrect selection: {% endif %} {% if
-              choice.id in selected_ids and choice.is_correct %}Correct answer:
-              {% endif %} {{choice.choice_text}}
+              {% if choice.id not in selected_ids and choice.is_correct %}
+                Not selected: 
+              {% endif %} 
+              {% if choice.id in selected_ids and not choice.is_correct %}
+                Incorrect selection: 
+              {% endif %} 
+              {% if choice.id in selected_ids and choice.is_correct %}
+                Correct answer: 
+              {% endif %} 
+              {{choice.choice_text}}
             </p>
             {% endfor %}
           </div>
