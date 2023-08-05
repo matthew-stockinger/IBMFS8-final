@@ -25,7 +25,7 @@ with open("/django-keys/ibmfs8-final-key.txt") as f:
 # SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # <HINT> add your cloud host here
 ALLOWED_HOSTS = ["mstockinger-ibmfs8-final-project.azurewebsites.net", "127.0.0.1"]
@@ -77,10 +77,18 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+with open("/django-keys/ibmfs8finaldb.txt") as f:
+    DB_PASS = f.read().strip()
+# DB_PASS = os.environ["IBMFS8FINALDB"]
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "ibmfs8finaldb",
+        "USER": "postgres",
+        "PASSWORD": DB_PASS,
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
@@ -118,15 +126,15 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-MEDIA_ROOT = os.path.join(STATIC_ROOT, "media")
-# MEDIA_URL = "/media/"
-MEDIA_URL = os.path.join(STATIC_URL, "media/")
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+STATICFILES_DIRS = []
 
+# deployment security
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 # SECURE_SSL_REDIRECT = True
