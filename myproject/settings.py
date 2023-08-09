@@ -20,8 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # local dev:
-with open("/django-keys/ibmfs8-final-key.txt") as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = "nUhwgWMWue-ekrykgjneEx-9ZLrrP893-w.!Vku.EUqZA!8DeV"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,15 +75,13 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-with open("/django-keys/ibmfs8finaldb.txt") as f:
-    DB_PASS = f.read().strip()
-
+# dev only:
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "ibmfs8finaldb",
         "USER": "postgres",
-        "PASSWORD": DB_PASS,
+        "PASSWORD": "sxrGEy9JG69qvY3KFAup",
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
