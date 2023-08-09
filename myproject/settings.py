@@ -22,13 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # local dev:
 with open("/django-keys/ibmfs8-final-key.txt") as f:
     SECRET_KEY = f.read().strip()
-# SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 # <HINT> add your cloud host here
-ALLOWED_HOSTS = ["mstockinger-ibmfs8-final-project.azurewebsites.net", "127.0.0.1"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -79,7 +78,6 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 
 with open("/django-keys/ibmfs8finaldb.txt") as f:
     DB_PASS = f.read().strip()
-# DB_PASS = os.environ["IBMFS8FINALDB"]
 
 DATABASES = {
     "default": {
@@ -132,9 +130,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-STATICFILES_DIRS = []
 
-# deployment security
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-# SECURE_SSL_REDIRECT = True
+####### If running on Azure, add/override settings for production #########
+
+if "WEBSITE_HOSTNAME" in os.environ:
+    from .azure import *
