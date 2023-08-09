@@ -1,4 +1,0 @@
-# Course detail >> exams
-
-# Admin site
-- left-side navigation is not intuitive.  Though the course may wish me to leave everything registered there.
